@@ -8,6 +8,10 @@ class Find{
     return await this.col.find().toArray();
   }
 
+  async findFilter(filter){
+    return await this.col.find({idAnggota:filter}).toArray(); 
+  }
+
 }
 
 module.exports = Find;

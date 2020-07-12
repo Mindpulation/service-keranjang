@@ -9,7 +9,7 @@ class Cart extends MongoDB{
     super();        
 
     (async ()=>{
-      let col = await this.setup(url);      
+      let col = await (await this.setup(url)).collection("Keranjang");            
       this.find = new Find(col);          
     })();
 
