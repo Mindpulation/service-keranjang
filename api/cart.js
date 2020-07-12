@@ -8,16 +8,16 @@ app.get("/runall", async (_,res)=>{
   res.status(200).send({result : await get.getAll()});
 });
 
-app.get("/bufbrg", async (req, res)=>{  
-  res.status(200).send({result: await get.getBarangByAnggota(req.params.idAnggota)});
+app.get("/bufbrg", async (req, res)=>{    
+  res.status(200).send({result: await get.getBarangByAnggota(req.query.idAnggota)});
 });
 
-app.get("/cecsta", async (req, res)=>{
-  res.status(200).send({result: await get.cekByAnggotaAndStatus(req.params.idAnggota, req.params.status)});
+app.post("/cecsta", async (req, res)=>{
+  res.status(200).send({result: await get.cekByAnggotaAndStatus(req.body.idAnggota, req.body.status)});
 });
 
-app.get("/bufaas", async (req, res)=>{
-  res.status(200).send({result:await get.getByAnggotaAndStatus(req.params.idAnggota, req.params.status)});  
+app.post("/bufaas", async (req, res)=>{
+  res.status(200).send({result:await get.getByAnggotaAndStatus(req.body.idAnggota, req.body.status)});  
 });
 
 module.exports = app;

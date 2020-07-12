@@ -6,6 +6,8 @@ class Post extends Controller{
     super();    
   }  
 
+  
+
 }
 
 module.exports = Post;

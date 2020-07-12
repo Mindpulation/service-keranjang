@@ -20,17 +20,15 @@ class Get extends Controller{
     return obj;
   }
 
-  async getBarangByAnggota(anggota){
-    let e = new Array();
-    e = await this.model.find.findOne({idAnggota:anggota, sta:true}).barang;
-    let obj = {d:e, c:e.length};
+  async getBarangByAnggota(anggota){    
+    let e = await this.model.find.findOne({idAnggota:anggota, sta:true});    
+    let obj = {d:e.barang, c:e.barang.length};
     return obj;
   }    
 
-  async cekByAnggotaAndStatus(anggota, status){
-    let e = new Array();
-    e = await this.model.find.findOne({idAnggota:anggota, sta:status});
-    return (e.length == 0) ? false : true;
+  async cekByAnggotaAndStatus(anggota, status){         
+    let e = await this.model.find.findOne({idAnggota:anggota, sta:status});        
+    return (e === null || e.idAnggota === undefined) ? false : true;
   }
 
 }
