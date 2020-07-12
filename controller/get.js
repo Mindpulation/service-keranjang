@@ -7,15 +7,24 @@ class Get extends Controller{
   }
 
   async getAll(){
-    return await this.model.find.findAll({});
+    let e = new Array();
+    e = await this.model.find.findAll({});
+    let obj = {d : e,c : e.length}
+    return obj;
   }
 
   async getByAnggotaAndStatus(anggota, status){
-    return await this.model.find.findAll({idAnggota:anggota, sta:status});
+    let e = new Array();
+    e = await this.model.find.findAll({idAnggota:anggota, sta:status});
+    let obj = {d:e, c:e.length};
+    return obj;
   }
 
   async getBarangByAnggota(anggota){
-    return await this.model.find.findOne({idAnggota:anggota, sta:true}).barang;    
+    let e = new Array();
+    e = await this.model.find.findOne({idAnggota:anggota, sta:true}).barang;
+    let obj = {d:e, c:e.length};
+    return obj;
   }    
 
   async cekByAnggotaAndStatus(anggota, status){
