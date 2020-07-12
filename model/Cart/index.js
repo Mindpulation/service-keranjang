@@ -10,7 +10,7 @@ class Cart extends MongoDB{
 
     (async ()=>{
       let col = await (await this.setup(url)).collection("Keranjang");            
-      this.find = new Find(col);          
+      this.find = new Find(col);                
     })();
 
 
