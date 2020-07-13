@@ -21,9 +21,8 @@ class Get extends Controller{
   }
 
   async getBarangByAnggota(anggota){    
-    let e = await this.model.find.findOne({idAnggota:anggota, sta:true});    
-    let obj = {d:e.barang, c:e.barang.length};
-    return obj;
+    let e = await this.model.find.findOne({idAnggota:anggota, sta:true});        
+    return (e === null) ? false : obj = {d:e.barang, c:e.barang.length};    
   }    
 
   async cekByAnggotaAndStatus(anggota, status){         
