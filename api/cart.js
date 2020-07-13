@@ -18,38 +18,46 @@ app.get("/runall", async (_,res)=>{
 });
 
 app.get("/bufbrg", async (req, res)=>{    
+  (req.query.idAnggota === undefined) ? res.status(400).send({result:false}) :
   res.status(200).send({result: await get.getBarangByAnggota(req.query.idAnggota)});
 });
 
 app.post("/cecsta", async (req, res)=>{
-  res.status(200).send({result: await get.cekByAnggotaAndStatus(req.body.idAnggota, req.body.status)});
+  (req.body.idAnggota === undefined || req.body.sta === undefined) ? res.status(400).send({result:false}) :
+  res.status(200).send({result: await get.cekByAnggotaAndStatus(req.body.idAnggota, req.body.sta)});
 });
 
 app.post("/bufaas", async (req, res)=>{
-  res.status(200).send({result:await get.getByAnggotaAndStatus(req.body.idAnggota, req.body.status)});  
+  (req.body.idAnggota === undefined || req.body.sta === undefined) ? res.status(400).send({result:false}) :
+  res.status(200).send({result:await get.getByAnggotaAndStatus(req.body.idAnggota, req.body.sta)});  
 });
 
 app.post("/inuone", async (req, res)=>{
+  (req.body.data === undefined) ? res.status(400).send({result:false}) :
   res.status(200).send({result: await post.postOne(req.body.data)});
 });
 
 app.post("/inumany", async (req, res)=>{
+  (req.body.data === undefined) ? res.status(400).send({result:false}) :
   res.status(200).send({result: await post.postMany(req.body.data)});
 });
 
 app.put("/uadsta", async (req, res)=>{
-  res.status(200).send({result: await put.changeStatus(req.body.anggota, req.body.newsta)});
+  (req.body.idAnggota === undefined || req.body.newsta === undefined) ? res.status(400).send({result:false}) :
+  res.status(200).send({result: await put.changeStatus(req.body.idAnggota, req.body.newsta)});
 });
 
 app.put("/uadbrg", async (req, res)=>{
-  res.status(200).send({result: await put.changeBarang(req.body.anggota, req.body.barang)});
+  (req.body.idAnggota === undefined || req.body.barang === undefined) ? res.status(400).send({result:false}) :
+  res.status(200).send({result: await put.changeBarang(req.body.idAnggota, req.body.barang)});
 });
 
 app.delete("/deyagg", async (req, res)=>{
-  res.status(200).send({result: await del.delByAnggota(req.body.anggota)});
+  (req.body.idAnggota === undefined) ? res.status(400).send({result:false}) :
+  res.status(200).send({result: await del.delByAnggota(req.body.idAnggota)});
 });
 
-app.delete("/deyall", async (req, res)=>{
+app.delete("/deyall", async (req, res)=>{  
   res.status(200).send({result: await del.delAll()});
 });
 
