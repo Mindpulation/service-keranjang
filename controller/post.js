@@ -8,14 +8,12 @@ class Post extends Controller{
 
   async postOne(data){
     let e = await this.model.insert.inOne(data); 
-    console.log(e);
-    return e.acknowledged;
+    return (e.result.n === e.result.ok) ? true : false;
   }
 
   async postMany(){
     let e = await this.model.insert.inMany(data); 
-    console.log(e);
-    return e.acknowledged;
+    return (e.result.n === e.result.ok) ? true : false;
   }
 
 }
