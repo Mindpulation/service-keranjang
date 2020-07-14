@@ -7,7 +7,7 @@ class Delete extends Controller{
   }
 
   async delByAnggota(anggota){
-    let e = await this.model.delete.delOne({idAnggota:anggota});    
+    let e = await this.model.delete.delMany({idAnggota:anggota});    
     return (e.result.n === e.deletedCount) ? true : false;    
   }
 
