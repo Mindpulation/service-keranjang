@@ -6,16 +6,6 @@ class Delete extends Controller{
     super();
   }
 
-  async delByAnggota(anggota){
-    let e = await this.model.delete.delMany({idAnggota:anggota});    
-    return (e.result.n === e.deletedCount) ? true : false;    
-  }
-
-  async delAll(){
-    let e = await this.model.delete.delMany({});
-    return (e.result.n === e.deletedCount) ? true : false;    
-  }
-
 }
 
 module.exports = Delete;

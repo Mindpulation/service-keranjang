@@ -6,15 +6,10 @@ class Put extends Controller{
     super();
   }
 
-  async changeStatus(anggota, newStatus){
-    let filter = {idAnggota:anggota, sta:true}; let set={sta:newStatus};
-    let e = await this.model.update.updOne(filter, set);
-    return (e.result.n === e.modifiedCount) ? true : false;    
-  }
-
-  async changeBarang(anggota, barang){    
-    let filter={idAnggota:anggota, sta:true}; let set={barang:barang};
-    let e = await this.model.update.updOne(filter, set);    
+  async updateItem(id, item){
+    let get = {_id:new ObjectID(id)}
+    let set = {item:item}
+    let e = await this.model.update.updOne(get, set);
     return (e.result.n === e.modifiedCount) ? true : false;
   }
 

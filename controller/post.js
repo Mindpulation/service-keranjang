@@ -11,11 +11,6 @@ class Post extends Controller{
     return (e.result.n === e.insertedCount) ? true : false;
   }
 
-  async postMany(data){
-    let e = await this.model.insert.inMany(data);     
-    return (e.result.n === e.insertedCount) ? true : false;
-  }
-
 }
 
 module.exports = Post;
