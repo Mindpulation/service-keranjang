@@ -13,8 +13,8 @@ const del = new Del();
 const express = require('express');
 const app =  express.Router();
 
-app.get("/getId/{id}",  async (req, res)=>{
-  let id = req.param.id;
+app.get("/getId/:id",  async (req, res)=>{
+  let id = req.params.id;    
   res.status(200).send({result:await get.getById(id)})
 });
 
@@ -22,7 +22,7 @@ app.post("/in", async (req, res)=>{
   res.status(200).send({result: await post.postOne(req.body.data)})
 })
 
-app.put("/updItem", async (req, res)=>{
+app.put("/updItem/:id", async (req, res)=>{
   res.status(200).send({result: await put.updateItem(req.params.id, req.body.item)})
 });
 

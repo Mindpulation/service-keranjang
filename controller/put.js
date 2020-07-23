@@ -1,4 +1,6 @@
 const Controller  = require('./index');
+const mongo = require('mongodb');
+const ObjectID = mongo.ObjectID;
 
 class Put extends Controller{
 
