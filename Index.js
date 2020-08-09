@@ -18,4 +18,4 @@ app.delete("*", (req,res) => { res.status(403).send({ status : "Forbidden" }) })
 app.get("*", (req,res) => { res.status(403).send({ status : "Forbidden" }) });
 app.put("*", (req,res) => { res.status(403).send({ status : "Forbidden" }) });
 
-app.listen(1090, err => {(err) ? console.log("Error : "+err) : console.log("Server Port 1090 [Keranjang:running]");});
+app.listen(3020, err => {(err) ? console.log("Error : "+err) : console.log("Server Port 3020 [Keranjang:running]");});
