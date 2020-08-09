@@ -1,0 +1,27 @@
+version: '3.3'
+services:
+  mongo:
+    image: mongo
+    container_name: "db-keranjang"
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_DATABASE: db-keranjang
+    volumes:
+      - './dockervolume/mongodb:/data/db'
+    ports:
+      - 27017:27017
+
+  app:
+    container_name: 'service-keranjang'
+    image: devkotakjualan/service-keranjang
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '3020:3020'
+    depends_on:
+      - 'mongo'
+
+networks:
+  WServiceRejectNetwork:
+    driver: bridge
